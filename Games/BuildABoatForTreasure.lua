@@ -1,5 +1,5 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/88lkk/Pandaware/refs/heads/main/main.lua"))()
-local Window = Library:Window()
+local Window = Library:Window("pandaware | dev mode")
 
 local OtherData = LocalPlayer.OtherData
 local Blocks = workspace.Blocks[LocalPlayer.Name]
@@ -295,5 +295,30 @@ do
 		end
 
 		Questing = false
+	end)
+end
+
+do
+	local Clicking = false
+
+	Window:Button("Click Others Blocks", function()
+		if Clicking then return end
+		Clicking = true
+
+		for _, Folder in workspace.Blocks:GetChildren() do
+			if Folder.Name == LocalPlayer.Name then continue end
+
+			for _, Block in Folder:GetChildren() do
+				if Block.Name == "CameraDome" then continue end
+
+				local Click = Block:FindFirstChildOfClass("ClickDetector")
+				if Click then
+					fireclickdetector(Click)
+					task.wait()
+				end
+			end
+		end
+
+		Clicking = false
 	end)
 end
