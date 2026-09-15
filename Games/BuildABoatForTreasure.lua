@@ -1,5 +1,5 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/88lkk/Pandaware/refs/heads/main/main.lua"))()
-local Window = Library:Window("pandaware | dev mode")
+local Window = Library:Window("pandaware")
 
 local OtherData = LocalPlayer.OtherData
 local Blocks = workspace.Blocks[LocalPlayer.Name]
@@ -97,7 +97,7 @@ do
 		end
 	end
 
-	Window:Toggle("88lkk's Autofarm", function(Toggled)
+	Window:Toggle("Autofarm", function(Toggled)
 		if Toggled then
 			Mark("Autofarm", LocalPlayer.CharacterAdded:Connect(Farm))
 			Farm()
